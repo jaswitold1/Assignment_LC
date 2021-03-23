@@ -8,6 +8,7 @@ function App() {
       method: "GET",
     })
       .then((resp) => resp.json())
+      .then((resp) => resp.map((el) => Object.entries(el)))
       .then((resp) => setData(resp))
       .catch((error) => console.log(error));
     return () => {
@@ -27,7 +28,19 @@ function App() {
             type='text'
           />
         </form>
-        <article></article>
+        <article>
+          <ul>
+            {data ? (
+              <div>
+                {data.map((el, i) => {
+                  return <li key={i}>{el[1][1]}</li>;
+                })}
+              </div>
+            ) : (
+              <span>loading</span>
+            )}
+          </ul>
+        </article>
       </main>
     </div>
   );
