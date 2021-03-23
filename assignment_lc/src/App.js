@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users", {
       method: "GET",
@@ -15,6 +16,11 @@ function App() {
       setData([]);
     };
   }, []);
+  const handleInput = (event) => {
+    setSearch(event.target.value);
+  };
+  const handleSearch = () => {};
+
   return (
     <div className='App'>
       <header>
@@ -23,6 +29,7 @@ function App() {
       <main>
         <form>
           <input
+            onChange={handleInput}
             name='search'
             placeholder='Search by user name...'
             type='text'
