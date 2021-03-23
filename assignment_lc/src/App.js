@@ -19,7 +19,10 @@ function App() {
   const handleInput = (event) => {
     setSearch(event.target.value);
   };
-  const handleSearch = () => {};
+
+  let searchData = data.filter((el) => {
+    return el[1][1].toLowerCase().includes(search);
+  });
 
   return (
     <div className='App'>
@@ -39,7 +42,7 @@ function App() {
           <ul>
             {data ? (
               <div>
-                {data.map((el, i) => {
+                {searchData.map((el, i) => {
                   return <li key={i}>{el[1][1]}</li>;
                 })}
               </div>
