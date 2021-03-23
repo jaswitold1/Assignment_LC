@@ -32,6 +32,7 @@ function App() {
       <main>
         <form>
           <input
+            value={search}
             onChange={handleInput}
             name='search'
             placeholder='Search by user name...'
